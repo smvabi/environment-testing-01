@@ -1,0 +1,27 @@
+name: "Workflow of Parent REPO"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Workflow name
+        run: |
+          echo "I am Workflow on Parent REPO"
+
+      - name: Trigger child repo workflow
+        uses: convictional/trigger-workflow-and-wait@1.6.1
+        with: 
+          owner: smvabi
+          repo: environment-testing-02
+          github_token: ${{ secrets.GITHUB.token}}
+          workflow_file_name: python-ci-ch.yml
+          ref: main
+          wait_interval: 10
+          propagate_failure: true
+          trigger_workflow: true
+          wait_workflow: true
