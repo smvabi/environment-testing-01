@@ -1,37 +1,18 @@
 name: workflow_01
 
 on:
-  workflow_dispatch:
-    inputs:
-      workflow:
-        description: 'Workflow in environment-testing-02 to be triggered'
-        required: true
-        default: 'workflow_02'
-
-      workflow2_github_account:
-        description: 'GitHub Account Owner'
-        required: true
-        default: 'smvabi'
-
-      workflow2_repo_github:
-        description: 'repo-name'
-        required: true
-        default: 'environment-testing-02'
+  workflow_run:
+    workflows: ["workflow_02"]
+    types:
+      - completed
 
 jobs:
-  check-and-trigger:
+  trigger-workflow-02:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Workflow Name
+      - name: Trigger Workflow_02
         run: |
-          if [ "${{ github.event.inputs.workflow }}" != "workflow_02" ]; then
-            echo "Skipping workflow dispatch as it's not the desired workflow."
-            exit 0
-          fi
-      - name: Trigger Workflow
-        run: |
-          curl -X POST https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/dispatches \
+          curl -X POST https://api.github.com/repos/smvabi/environment-testing-02/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.G_ACCESS_TOKEN }} \
-          --data '{"event_type": "trigger_workflow_event", "client_payload": { "workflow": "'${{ inputs.workflow }}'", "repository": "'"$GITHUB_REPOSITORY"'" }}'
-      - uses: actions/checkout@v3
+          --data '{"event_type": "trigger_workflow_event", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
