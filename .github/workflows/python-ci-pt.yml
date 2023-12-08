@@ -1,30 +1,32 @@
-name: "Workflow of Parent REPO"
-
+name: workflow_01
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+     inputs:
+      workflow_02:
+        description: 'ًWorkflow 2 which will be triggered'
+        required: true
+        default: 'workflow_02'
+
+      workflow2_github_account:
+        description: 'GitHub Account Owner'
+        required: true
+        default: ':smvsbi'
+
+      workflow2_repo_github:
+        description: 'repo-name'
+        required: true
+        default: ':environment-testing-02' 
 
 jobs:
-  echo:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Echo Workflow name
-        run: |
-          echo "I am Workflow on Parent REPO"
 
-  trigger_workflow:
-    runs-on: ubuntu-latest
     steps:
-      - name: Trigger child repo workflow
-        uses: convictional/trigger-workflow-and-wait@1.6.4
-        with: 
-          owner: smvabi
-          repo: environment-testing-02
-          github_token: ${{ secrets.G_ACCESS_TOKEN}}
-          workflow_file_name: python-ci-ch.yml
-          ref: main
-          wait_interval: 10
-          propagate_failure: true
-          trigger_workflow: true
-          wait_workflow: true
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Test
+        run: |
+          curl -X POST https://api.github.com/repos/:smvabi/:environment-testing-02/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.G_ACCESS_TOKEN }} \
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+      - uses: actions/checkout@v3
