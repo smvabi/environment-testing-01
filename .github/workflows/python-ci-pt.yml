@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       workflow:
-        description: 'Workflow 2 which will be triggered'
+        description: 'Workflow in environment-testing-02 to be triggered'
         required: true
-        default: 'workflow_02'
+        default: 'workflow_02'  # Change this to the desired workflow name
 
       workflow2_github_account:
         description: 'GitHub Account Owner'
@@ -24,12 +24,10 @@ jobs:
     environment: demo-env
 
     steps:
-      - name: Trigger Workflow in Another Repository
+      - name: Trigger Workflow
         run: |
-          curl -X POST \
-          -H 'Authorization: Bearer ${{ secrets.G_ACCESS_TOKEN }}' \
+          curl -X POST https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          -H 'Content-Type: application/json' \
-          https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/actions/workflows/${{ inputs.workflow }}/dispatches \
-          --data '{"ref": "main", "inputs": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          -u ${{ secrets.G_ACCESS_TOKEN }} \
+          --data '{"event_type": "trigger_workflow_event", "client_payload": { "workflow": "'${{ inputs.workflow }}'", "repository": "'"$GITHUB_REPOSITORY"'" }}'
       - uses: actions/checkout@v3
