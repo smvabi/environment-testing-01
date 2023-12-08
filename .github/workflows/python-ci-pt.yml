@@ -6,7 +6,7 @@ on:
       workflow:
         description: 'Workflow in environment-testing-02 to be triggered'
         required: true
-        default: 'workflow_02'  # Change this to the desired workflow name
+        default: 'workflow_03'  # Change this to the desired workflow name
 
       workflow2_github_account:
         description: 'GitHub Account Owner'
