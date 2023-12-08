@@ -6,7 +6,7 @@ on:
       workflow:
         description: 'Workflow in environment-testing-02 to be triggered'
         required: true
-        default: 'workflow_03'  # Change this to the desired workflow name
+        default: 'workflow_02'
 
       workflow2_github_account:
         description: 'GitHub Account Owner'
@@ -19,11 +19,15 @@ on:
         default: 'environment-testing-02'
 
 jobs:
-  build:
+  check-and-trigger:
     runs-on: ubuntu-latest
-    environment: demo-env
-
     steps:
+      - name: Check Workflow Name
+        run: |
+          if [ "${{ github.event.inputs.workflow }}" != "workflow_02" ]; then
+            echo "Skipping workflow dispatch as it's not the desired workflow."
+            exit 0
+          fi
       - name: Trigger Workflow
         run: |
           curl -X POST https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/dispatches \
