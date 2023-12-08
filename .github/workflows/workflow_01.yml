@@ -28,5 +28,5 @@ jobs:
           curl -X POST https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.G_ACCESS_TOKEN }} \
-          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "workflow_name": "workflow_02" }}'
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$environment-testing-02"'", "workflow_name": "workflow_02" }}'
       - uses: actions/checkout@v3
