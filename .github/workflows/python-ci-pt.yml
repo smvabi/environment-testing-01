@@ -17,17 +17,35 @@ on:
         required: true
         default: 'environment-testing-02'
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  # This workflow contains a single job called "build"
+  updateallrepos:
     runs-on: ubuntu-latest
     environment: demo-env
-
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Test
-        run: |
-          curl -X POST https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.G_ACCESS_TOKEN }} \
-          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
-      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.G_ACCESS_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'smvabi',
+              repo: 'environment-testing-02',
+              workflow_id: 'workflow_02.yml',
+              ref: 'main'
+            })
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     environment: demo-env
+
+#     steps:
+#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#       - name: Test
+#         run: |
+#           curl -X POST https://api.github.com/repos/${{ inputs.workflow2_github_account }}/${{ inputs.workflow2_repo_github }}/dispatches \
+#           -H 'Accept: application/vnd.github.everest-preview+json' \
+#           -u ${{ secrets.G_ACCESS_TOKEN }} \
+#           --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+#       - uses: actions/checkout@v3
