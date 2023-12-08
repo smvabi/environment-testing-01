@@ -14,7 +14,7 @@ jobs:
           echo "I am Workflow on Parent REPO"
 
       - name: Trigger child repo workflow
-        uses: convictional/trigger-workflow-and-wait@1.6.1
+        uses: convictional/trigger-workflow-and-wait@1.3.0
         with: 
           owner: smvabi
           repo: environment-testing-02
