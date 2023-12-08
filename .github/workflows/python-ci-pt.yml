@@ -12,12 +12,12 @@ jobs:
       - name: Echo Workflow name
         run: |
           echo "I am Workflow on Parent REPO"
-          
+
   trigger_workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger child repo workflow
-        uses: convictional/trigger-workflow-and-wait@1.6.5
+        uses: convictional/trigger-workflow-and-wait@1.6.4
         with: 
           owner: smvabi
           repo: environment-testing-02
