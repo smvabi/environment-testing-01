@@ -40,5 +40,5 @@ jobs:
           curl -X POST https://api.github.com/repos/smvabi/environment-testing-02/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.G_ACCESS_TOKEN }} \
-          --data '{"event_type": "test", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "test2", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
       - uses: actions/checkout@v3
