@@ -21,14 +21,24 @@ jobs:
   updateallrepos:
     runs-on: ubuntu-latest
     environment: demo-env
+    # steps:
+    #   - uses: actions/github-script@v7.0.1
+    #     with:
+    #       github-token: ${{ secrets.G_ACCESS_TOKEN }}
+    #       script: |
+    #         await github.rest.actions.createWorkflowDispatch({
+    #           owner: 'smvabi',
+    #           repo: 'environment-testing-02',
+    #           workflow_id: 'workflow_03.yml',
+    #           ref: 'main'
+    #         })
+
     steps:
-      - uses: actions/github-script@v7.0.1
-        with:
-          github-token: ${{ secrets.G_ACCESS_TOKEN }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'smvabi',
-              repo: 'environment-testing-02',
-              workflow_id: 'workflow_03.yml',
-              ref: 'main'
-            })
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Test
+        run: |
+          curl -X POST https://api.github.com/repos/smvabi/environment-testing-02/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.G_ACCESS_TOKEN }} \
+          --data '{"event_type": "test", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+      - uses: actions/checkout@v3
