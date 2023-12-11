@@ -29,6 +29,6 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: 'smvabi',
               repo: 'environment-testing-02',
-              workflow_id: 'workflow_02.yml',
+              workflow_id: 'workflow_03.yml',
               ref: 'main'
             })
