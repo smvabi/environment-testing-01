@@ -12,7 +12,6 @@ jobs:
       - name: Build
         run: |
             echo "Building..."
-            exit 1
 
   success:
     runs-on: ubuntu-latest
