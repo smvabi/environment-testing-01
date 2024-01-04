@@ -12,6 +12,7 @@ jobs:
       - name: Build
         run: |
             echo "Building..."
+            exit 1
 
   success:
     runs-on: ubuntu-latest
@@ -39,5 +40,5 @@ jobs:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
           needs: ${{ toJson(needs) }}
           job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
+          #steps: ${{ toJson(steps) }}
           dry_run: false
