@@ -18,6 +18,9 @@ on:
     #     default: 'environment-testing-02'
 
 jobs:
+  notify-ms-teams:
+    uses: ./.github/workflows/notify-ms.yml
+    
   updateallrepos:
     runs-on: ubuntu-latest
     environment: demo-env
@@ -43,5 +46,4 @@ jobs:
           --data '{"event_type": "test2", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
       - uses: actions/checkout@v3
 
-  notify-ms-teams:
-    uses: ./.github/workflows/notify-ms.yml
+  
