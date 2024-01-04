@@ -23,7 +23,7 @@ jobs:
         uses: skitionek/notify-microsoft-teams@master
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
-          dry_run: true
+          dry_run: false
           message: "Build succeeded!"
 
   notify_on_failure:
@@ -35,5 +35,5 @@ jobs:
         uses: skitionek/notify-microsoft-teams@master
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
-          dry_run: true
+          dry_run: false
           message: "Build failed!"
