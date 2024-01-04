@@ -42,3 +42,4 @@ jobs:
           -u ${{ secrets.G_ACCESS_TOKEN }} \
           --data '{"event_type": "test2", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
       - uses: actions/checkout@v3
+      - uses: ./.github/workflows/notify-ms.yml
