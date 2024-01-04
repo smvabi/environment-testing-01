@@ -18,8 +18,6 @@ on:
     #     default: 'environment-testing-02'
 
 jobs:
-  notify-ms-teams:
-    uses: ./.github/workflows/notify-ms.yml
     
   updateallrepos:
     runs-on: ubuntu-latest
