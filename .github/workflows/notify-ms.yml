@@ -17,21 +17,23 @@ jobs:
   notify_on_success:
     runs-on: ubuntu-latest
     needs: build
-    if: always() && success()
+    if: success()
     steps:
       - name: Microsoft Teams Notification on Success
         uses: skitionek/notify-microsoft-teams@master
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          dry_run: true
           message: "Build succeeded!"
 
   notify_on_failure:
     runs-on: ubuntu-latest
     needs: build
-    if: always() && failure()
+    if: failure()
     steps:
       - name: Microsoft Teams Notification on Failure
         uses: skitionek/notify-microsoft-teams@master
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          dry_run: true
           message: "Build failed!"
