@@ -33,6 +33,6 @@ jobs:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
         title: Pipeline name (Insights copilot Dev Pipeline)
         message: <p>Dev deployment has failed. Please find the issue deatils here and proceed to create Hotfix branch
-        color: ff69b4
+        color: ff0000
         buttons: |
           Issue https://github.com/smvabi/environment-testing-01/actions
