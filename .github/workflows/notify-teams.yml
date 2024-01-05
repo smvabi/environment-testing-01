@@ -23,8 +23,4 @@ jobs:
         message: <p>This is my <strong>awesome message!</strong></p>
         color: ff69b4
         buttons: |
-          Click here!
-          Or here… 
-          This button will not be shown as it has no target URL
-          ${{ env.MY_SPECIAL_BUTTON }}
-          ${{ env.MY_AWESOME_BUTTON }}
+          Button 1 https://github.com/smvabi/environment-testing-01/actions
