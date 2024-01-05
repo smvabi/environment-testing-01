@@ -9,6 +9,9 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+    - name: Print the hello message
+      run: |
+        echo "Hello World!"
 
     - name: 📣 Send teams notification
       uses: simbo/msteams-message-card-action@latest
