@@ -14,6 +14,10 @@ jobs:
         echo "Hello World!"
         exit 1
 
+    - name: Set URL Variable
+      id: set_url
+      run: echo "::set-output name=url::https://github.com/smvabi/environment-testing-01/actions"
+
     - name: 📣 Send teams notification
       uses: simbo/msteams-message-card-action@latest
       if: success()
@@ -23,7 +27,7 @@ jobs:
         message: <p>Dev deployment successfully completed. Check the application below and provide your approval for QA deployment</p>
         color: ff69b4
         buttons: |
-          Approve https://github.com/smvabi/environment-testing-01/actions
+          Approve ${{ steps.set_url.outputs.url }}
 
 
     - name: 📣 Send teams notification
@@ -35,4 +39,4 @@ jobs:
         message: <p>Dev deployment has failed. Please find the issue deatils here and proceed to create Hotfix branch
         color: ff0000
         buttons: |
-          Issue https://github.com/smvabi/environment-testing-01/actions
+          Issue ${{ steps.set_url.outputs.url }}
