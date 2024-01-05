@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: 🪣 Set env vars
       run: |
-        echo "MY_SPECIAL_BUTTON=Cool /" >> $GITHUB_ENV
+        echo "Check the application here= https://github.com/smvabi/environment-testing-01/actions/" >> $GITHUB_ENV
 
     - name: 📣 Send teams notification
       uses: simbo/msteams-message-card-action@latest
