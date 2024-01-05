@@ -9,14 +9,15 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-    - name: Print the hello message
-      run: |
-        echo "Hello World!"
-        exit 1
 
     - name: Set URL Variable
       id: set_url
       run: echo "::set-output name=url::https://github.com/smvabi/environment-testing-01/actions"
+
+    - name: Print the hello message
+      run: |
+        echo "Hello World!"
+        exit 1
 
     - name: 📣 Send teams notification
       uses: simbo/msteams-message-card-action@latest
@@ -39,4 +40,4 @@ jobs:
         message: <p>Dev deployment has failed. Please find the issue deatils here and proceed to create Hotfix branch</p>
         color: ff0000
         buttons: |
-          [{"type":"openUrl","title":"Issue","value":"${{ steps.set_url.outputs.url }}"}]
+          Issue ${{ steps.set_url.outputs.url }}
