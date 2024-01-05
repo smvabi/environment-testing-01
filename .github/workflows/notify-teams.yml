@@ -12,7 +12,7 @@ jobs:
 
     - name: Set URL Variable
       id: set_url
-      run: echo "::set-output name=url::https://github.com/smvabi/environment-testing-01/actions"
+      run: echo "::set-output name=url::${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
     - name: Print the hello message
       run: |
