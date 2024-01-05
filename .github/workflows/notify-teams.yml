@@ -39,4 +39,4 @@ jobs:
         message: <p>Dev deployment has failed. Please find the issue deatils here and proceed to create Hotfix branch</p>
         color: ff0000
         buttons: |
-          Issue ${{ steps.set_url.outputs.url }}
+          [{"type":"openUrl","title":"Issue","value":"${{ steps.set_url.outputs.url }}"}]
