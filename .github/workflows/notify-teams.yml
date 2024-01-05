@@ -27,7 +27,7 @@ jobs:
         message: <p>Dev deployment successfully completed. Check the application below and provide your approval for QA deployment</p>
         color: ff69b4
         buttons: |
-          Approve ${{ steps.set_url.outputs.url }}
+          Approve ${{ steps.set_url.output.url }}
 
 
     - name: 📣 Send teams notification
