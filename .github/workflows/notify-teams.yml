@@ -37,7 +37,7 @@ jobs:
       with:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
         title: Pipeline name (Insights copilot Dev Pipeline)
-        message: <p>Dev deployment has failed. Please find the issue deatils here and proceed to create Hotfix branch</p>
+        message: <p>Dev deployment has failed. Please find the issue details here and proceed to create Hotfix branch</p>
         color: ff0000
         buttons: |
-          Issue ${{ steps.set_url.outputs.url }}
+          Failure logs ${{ steps.set_url.outputs.url }}
