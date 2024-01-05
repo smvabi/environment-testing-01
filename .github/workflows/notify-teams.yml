@@ -9,18 +9,16 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-    - name: 🪣 Set env vars
+    - name: Print the hello message
       run: |
-        echo "Check the application here= https://github.com/smvabi/environment-testing-01/actions/" >> $GITHUB_ENV
+        echo: "Hello World!"
 
     - name: 📣 Send teams notification
       uses: simbo/msteams-message-card-action@latest
-      env:
-        MY_AWESOME_BUTTON: Awesome/
       with:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
-        title: Hello world!
-        message: <p>This is my <strong>awesome message!</strong></p>
+        title: Pipeline name (Insights copilot Dev Pipeline)
+        message: <p>Dev deployment successfully completed. Check the application below - and provide your approval via  for QA deployment</p>
         color: ff69b4
         buttons: |
-          Button 1 https://github.com/smvabi/environment-testing-01/actions
+          Approve https://github.com/smvabi/environment-testing-01/actions
