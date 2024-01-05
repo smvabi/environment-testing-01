@@ -35,4 +35,4 @@ jobs:
         message: <p>Dev deployment has failed. Please find the issue deatils here and proceed to create Hotfix branch
         color: ff69b4
         buttons: |
-          Approve https://github.com/smvabi/environment-testing-01/actions
+          Issue https://github.com/smvabi/environment-testing-01/actions
