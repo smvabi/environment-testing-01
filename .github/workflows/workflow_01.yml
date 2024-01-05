@@ -1,47 +1,47 @@
-name: workflow_01
-on:
-  workflow_dispatch:
-    # inputs:
-    #   workflow:
-    #     description: 'Workflow 2 which will be triggered'
-    #     required: true
-    #     default: 'workflow_02'
+# name: workflow_01
+# on:
+#   workflow_dispatch:
+#     # inputs:
+#     #   workflow:
+#     #     description: 'Workflow 2 which will be triggered'
+#     #     required: true
+#     #     default: 'workflow_02'
 
-    #   workflow2_github_account:
-    #     description: 'GitHub Account Owner'
-    #     required: true
-    #     default: 'smvabi'
+#     #   workflow2_github_account:
+#     #     description: 'GitHub Account Owner'
+#     #     required: true
+#     #     default: 'smvabi'
 
-    #   workflow2_repo_github:
-    #     description: 'repo-name'
-    #     required: true
-    #     default: 'environment-testing-02'
+#     #   workflow2_repo_github:
+#     #     description: 'repo-name'
+#     #     required: true
+#     #     default: 'environment-testing-02'
 
-jobs:
+# jobs:
     
-  updateallrepos:
-    runs-on: ubuntu-latest
-    environment: demo-env
-    # steps:
-    #   - uses: actions/github-script@v7.0.1
-    #     with:
-    #       github-token: ${{ secrets.G_ACCESS_TOKEN }}
-    #       script: |
-    #         await github.rest.actions.createWorkflowDispatch({
-    #           owner: 'smvabi',
-    #           repo: 'environment-testing-02',
-    #           workflow_id: 'workflow_03.yml',
-    #           ref: 'main'
-    #         })
+#   updateallrepos:
+#     runs-on: ubuntu-latest
+#     environment: demo-env
+#     # steps:
+#     #   - uses: actions/github-script@v7.0.1
+#     #     with:
+#     #       github-token: ${{ secrets.G_ACCESS_TOKEN }}
+#     #       script: |
+#     #         await github.rest.actions.createWorkflowDispatch({
+#     #           owner: 'smvabi',
+#     #           repo: 'environment-testing-02',
+#     #           workflow_id: 'workflow_03.yml',
+#     #           ref: 'main'
+#     #         })
 
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Test
-        run: |
-          curl -X POST https://api.github.com/repos/smvabi/environment-testing-02/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.G_ACCESS_TOKEN }} \
-          --data '{"event_type": "test2", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
-      - uses: actions/checkout@v3
+#     steps:
+#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#       - name: Test
+#         run: |
+#           curl -X POST https://api.github.com/repos/smvabi/environment-testing-02/dispatches \
+#           -H 'Accept: application/vnd.github.everest-preview+json' \
+#           -u ${{ secrets.G_ACCESS_TOKEN }} \
+#           --data '{"event_type": "test2", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+#       - uses: actions/checkout@v3
 
   
