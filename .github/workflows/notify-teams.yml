@@ -12,7 +12,6 @@ jobs:
     - name: Print the hello message
       run: |
         echo "Hello World!"
-        exit 1
 
     - name: Set URL Variable
       id: set_url
