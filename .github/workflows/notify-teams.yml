@@ -8,7 +8,6 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
-    environment: demo-env
     steps:
 
     - name: Set URL Variable
@@ -42,3 +41,9 @@ jobs:
         color: c30010
         buttons: |
           Failure logs ${{ steps.set_url.outputs.url }}
+
+        
+  approval:
+    runs-on: ubuntu-latest
+    environment: demo-env
+    needs: notify
