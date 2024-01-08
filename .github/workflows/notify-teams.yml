@@ -47,3 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: demo-env
     needs: notify
+    steps:
+      - name: Approval Succeeded
+        run: |
+          echo "Approved"
