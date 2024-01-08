@@ -8,6 +8,7 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    environment: demo-env
     steps:
 
     - name: Set URL Variable
@@ -28,6 +29,7 @@ jobs:
         color: 00ff00
         buttons: |
           Approve ${{ steps.set_url.outputs.url }}
+          Summary https://brave-plant-0672fef10.3.azurestaticapps.net/
 
 
     - name: 📣 Send teams notification
