@@ -25,7 +25,7 @@ jobs:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
         title: Pipeline name (Insights copilot Dev Pipeline)
         message: <p>Dev deployment successfully completed. <br>Check the application below and provide your approval for QA deployment</p>
-        color: ff69b4
+        color: 00ff00
         buttons: |
           Approve ${{ steps.set_url.outputs.url }}
 
@@ -37,6 +37,6 @@ jobs:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
         title: Pipeline name (Insights copilot Dev Pipeline)
         message: <p>Dev deployment has failed. <br>Please find the issue details here and proceed to create Hotfix branch</p>
-        color: ff0000
+        color: c30010
         buttons: |
           Failure logs ${{ steps.set_url.outputs.url }}
