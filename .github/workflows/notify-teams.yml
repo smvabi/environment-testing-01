@@ -1,5 +1,4 @@
-name: Build and Notify
-
+name: Build
 on:
   push:
     branches:
