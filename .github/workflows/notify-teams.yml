@@ -24,8 +24,9 @@ jobs:
       with:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
         title: Pipeline name (Insights copilot Dev Pipeline)
-        message: <p>Dev deployment successfully completed. <br>Check the application below and provide your approval for QA deployment</p>
-        color: 00ff00
+        message: >
+          <p style="color: #00ff00;">Dev deployment successfully completed.
+          <br>Check the application below and provide your approval for QA deployment</p>
         buttons: |
           Approve ${{ steps.set_url.outputs.url }}
           Open Application https://brave-plant-0672fef10.3.azurestaticapps.net/
@@ -37,8 +38,9 @@ jobs:
       with:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
         title: Pipeline name (Insights copilot Dev Pipeline)
-        message: <p>Dev deployment has failed. <br>Please find the issue details here and proceed to create Hotfix branch</p>
-        color: c30010
+        message: >
+          <p style="color: #c30010;">Dev deployment has failed.
+          <br>Please find the issue details here and proceed to create Hotfix branch</p>
         buttons: |
           Failure logs ${{ steps.set_url.outputs.url }}
 
