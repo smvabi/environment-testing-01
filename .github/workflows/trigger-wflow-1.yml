@@ -1,6 +1,10 @@
 name: Trigger Workflow V1 New
 
 on:
+  push:
+    branches: 
+      - feat/AB#12345-trigger-workflow
+      
   workflow_dispatch:
     inputs:
       repo:
