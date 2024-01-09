@@ -29,6 +29,7 @@ jobs:
         buttons: |
           Approve ${{ steps.set_url.outputs.url }}
           Open Application https://brave-plant-0672fef10.3.azurestaticapps.net/
+        image: "https://i.pngimg.me/thumb/f/350/m2i8i8b1i8m2K9H7.jpg"
 
 
     - name: 📣 Send teams notification
