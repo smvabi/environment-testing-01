@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - feat/AB#12345-trigger-workflow
 
 jobs:
   notify:
