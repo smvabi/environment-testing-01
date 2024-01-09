@@ -1,0 +1,31 @@
+name: Trigger Workflow V1
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Repository name in which you are going to trigger'
+        required: true
+        default: 'ab-inbev-analytics/abi_insights_copilot_frontend'
+
+      workflow_name:
+        description: 'Workflow name which is going to be triggered'
+        required: true
+        default: 'to-be-triggered.yml'
+
+      branch_name:
+        description: 'Branch name from the given repository'
+        required: true
+        default: 'feat/AB#67176-trigger-workflow-template-fnt'
+
+jobs:
+  trigger-workflow:
+    runs-on: ubuntu-latest   
+
+    steps:
+      - name: Test
+        run: |
+          "https://api.github.com/repos/${{ github.event.inputs.repo }}/actions/workflows/${{ github.event.inputs.workflow_name }}/dispatches" \
+          -d "{\"ref\":\"${{ github.event.inputs.branch_name }}\"}"
+
+      - uses: actions/checkout@v3
