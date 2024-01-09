@@ -33,6 +33,11 @@ jobs:
           -
             activityTitle: Success
             activityImage: https://i.pngimg.me/thumb/f/350/m2i8i8b1i8m2K9H7.jpg
+            facts:
+              -
+                name: "Board:"
+                value: Name of board
+            text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             
 
     - name: 📣 Send teams notification
