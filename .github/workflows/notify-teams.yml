@@ -26,7 +26,7 @@ jobs:
         message: >
           <p style="color: #00ff00;">Dev deployment successfully completed.
           <br>Check the application below and provide your approval for QA deployment</p>
-          <img src="https://your-custom-image-url.jpg" alt="Icon" width="50" height="50">
+          <img src="https://i.pngimg.me/thumb/f/350/m2i8i8b1i8m2K9H7.jpg" alt="Icon" width="50" height="50">
         buttons: |
           Approve ${{ steps.set_url.outputs.url }}
           Open Application https://brave-plant-0672fef10.3.azurestaticapps.net/
