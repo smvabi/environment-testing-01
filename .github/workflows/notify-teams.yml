@@ -22,13 +22,13 @@ jobs:
       if: success()
       with:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
-        title: Pipeline name (Insights copilot Dev Pipeline)
+        title: Insights copilot DEV Pipeline has successfully completed
         message: >
           <p>Dev deployment <strong> <span style="color: #008000;">successfully completed.</span></strong>
           <br>Check the application below and provide your approval for QA deployment</p>
         buttons: |
           Approve ${{ steps.set_url.outputs.url }}
-          Open Application https://brave-plant-0672fef10.3.azurestaticapps.net/           
+          View application at DEV https://brave-plant-0672fef10.3.azurestaticapps.net/           
 
 
     - name: 📣 Send teams notification
@@ -36,7 +36,7 @@ jobs:
       if: failure()
       with:
         webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
-        title: Pipeline name (Insights copilot Dev Pipeline)
+        title: Insights copilot DEV Pipeline has failed.
         message: >
           <p>Dev deployment has <strong> <span style="color: #C41E3A;">failed.</span></strong>
           <br>Please find the issue details here and proceed to create Hotfix branch</p>
