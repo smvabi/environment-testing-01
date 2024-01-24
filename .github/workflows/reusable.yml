@@ -23,7 +23,7 @@ jobs:
           message: >
             <p>Dev deployment has <strong> <span style="color: #C41E3A;">failed.</span></strong>
             <br>Please find the issue details here and proceed to create a Hotfix branch</p>
-            buttons: |
+          buttons: |
             Failure logs ${{ steps.set_url.outputs.url }}
 
       - name: Send teams notification on success
@@ -35,6 +35,6 @@ jobs:
           message: >
             <p>Dev deployment <strong> <span style="color: #008000;">successfully completed.</span></strong>
             <br>Check the application below and provide your approval for QA deployment</p>
-            buttons: |
+          buttons: |
             Approve ${{ steps.set_url.outputs.url }}
             View application at DEV https://brave-plant-0672fef10.3.azurestaticapps.net/
