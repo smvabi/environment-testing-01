@@ -3,21 +3,21 @@ on:
   workflow_call:
 
 jobs:
-  first-job:
+  backend-wala-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
         uses: actions/checkout@v3
-        
+
       - name: Print the hello message
         run: |
           echo "Hello from cd docker backend!"
 
   notify:
-    needs: first-job
+    needs: backend-wala-job
     if: always()
     uses: ./.github/workflows/reusable.yml
     with:
-      var1: ${{ needs.first-job.result }}
-      var2: 'backend'
+      var1: ${{ needs.backend-wala-job.result }}
+      var2: 'backend-demo'
     secrets: inherit

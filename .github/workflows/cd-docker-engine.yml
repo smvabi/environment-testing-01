@@ -3,12 +3,12 @@ on:
   workflow_call:
 
 jobs:
-  first-job:
+  engine-wala-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
         uses: actions/checkout@v3
-        
+
       - name: Print the hello message
         run: |
           echo "Hello from cd docker engine!"
@@ -18,10 +18,10 @@ jobs:
           echo "hello again"
 
   # notify:
-  #   needs: first-job
+  #   needs: engine-wala-job
   #   if: always()
   #   uses: ./.github/workflows/reusable.yml
   #   with:
-  #     var1: ${{ needs.first-job.result }}
-  #     var2: 'engine'
+  #     var1: ${{ needs.engine-wala-job.result }}
+  #     var2: 'engine-demo'
   #   secrets: inherit
