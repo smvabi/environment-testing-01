@@ -1,0 +1,40 @@
+name: Reusable
+on:
+  workflow_call:
+    inputs:
+      var1:
+        required: true
+        type: string
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set URL Variable
+        id: set_url
+        run: echo "::set-output name=url::${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Send teams notification on failure
+        if: ${{ inputs.var1 == 'failure' }}
+        uses: simbo/msteams-message-card-action@latest
+        with:
+          webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
+          title: Insights copilot DEV Pipeline has failed.
+          message: >
+            <p>Dev deployment has <strong> <span style="color: #C41E3A;">failed.</span></strong>
+            <br>Please find the issue details here and proceed to create a Hotfix branch</p>
+            buttons: |
+            Failure logs ${{ steps.set_url.outputs.url }}
+
+      - name: Send teams notification on success
+        if: ${{ inputs.var1 == 'success' }}
+        uses: simbo/msteams-message-card-action@latest
+        with:
+          webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
+          title: Insights copilot DEV Pipeline has successfully completed
+          message: >
+            <p>Dev deployment <strong> <span style="color: #008000;">successfully completed.</span></strong>
+            <br>Check the application below and provide your approval for QA deployment</p>
+            buttons: |
+            Approve ${{ steps.set_url.outputs.url }}
+            View application at DEV https://brave-plant-0672fef10.3.azurestaticapps.net/
