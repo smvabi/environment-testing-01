@@ -1,0 +1,16 @@
+name: Notify
+on:
+  push:
+    branches:
+      - feat/AB#12345-trigger-workflow
+
+jobs:
+  redirect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call cd docker engine
+        uses: ./.github/workflows/cd-docker-engine.yml
+
+      - name: Call cd docker backend
+        uses: ./.github/workflows/cd-docker-backend.yml
+        

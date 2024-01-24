@@ -1,8 +1,6 @@
 name: Notify
 on:
-  push:
-    branches:
-      - feat/AB#12345-trigger-workflow
+  workflow_call:
 
 jobs:
   first-job:
@@ -10,11 +8,7 @@ jobs:
     steps:
       - name: Print the hello message
         run: |
-          echo "Hello World!"
-
-      - name: print 2
-        run: |
-          echo "hello again"
+          echo "Hello from cd docker backend!"
 
   notify:
     needs: first-job
@@ -22,7 +16,5 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       var1: ${{ needs.first-job.result }}
-      var2: 'demo'
+      var2: 'backend'
     secrets: inherit
-
-          

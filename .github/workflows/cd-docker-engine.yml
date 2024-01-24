@@ -1,0 +1,24 @@
+name: Notify
+on:
+  workflow_call:
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the hello message
+        run: |
+          echo "Hello from cd docker engine!"
+
+      - name: print 2
+        run: |
+          echo "hello again"
+
+  # notify:
+  #   needs: first-job
+  #   if: always()
+  #   uses: ./.github/workflows/reusable.yml
+  #   with:
+  #     var1: ${{ needs.first-job.result }}
+  #     var2: 'engine'
+  #   secrets: inherit
