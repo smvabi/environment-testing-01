@@ -5,6 +5,9 @@ on:
       var1:
         required: true
         type: string
+      var2:
+        required: true
+        type: string
 
 jobs:
   notify:
@@ -21,7 +24,7 @@ jobs:
           webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
           title: Insights copilot DEV Pipeline has failed.
           message: >
-            <p>Dev deployment has <strong> <span style="color: #C41E3A;">failed.</span></strong>
+            <p>Dev deployment for ${{inputs.var2}} has <strong> <span style="color: #C41E3A;">failed.</span></strong>
             <br>Please find the issue details here and proceed to create a Hotfix branch</p>
           buttons: |
             Failure logs ${{ steps.set_url.outputs.url }}
@@ -33,7 +36,7 @@ jobs:
           webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
           title: Insights copilot DEV Pipeline has successfully completed
           message: >
-            <p>Dev deployment <strong> <span style="color: #008000;">successfully completed.</span></strong>
+            <p>Dev deployment for ${{inputs.var2}} <strong> <span style="color: #008000;">successfully completed.</span></strong>
             <br>Check the application below and provide your approval for QA deployment</p>
           buttons: |
             Approve ${{ steps.set_url.outputs.url }}

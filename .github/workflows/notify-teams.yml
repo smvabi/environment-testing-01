@@ -22,6 +22,7 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       var1: ${{ needs.first-job.result }}
+      var2: 'demo'
     secrets: inherit
 
           
