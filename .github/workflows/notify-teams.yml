@@ -15,7 +15,6 @@ jobs:
       - name: print 2
         run: |
           echo "hello again"
-          exit 1
 
   notify:
     needs: first-job
@@ -23,5 +22,6 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       var1: ${{ needs.first-job.result }}
+    secrets: inherit
 
           
