@@ -15,14 +15,22 @@ jobs:
 
 
   docker-build:
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: [main]
     # if: contains('abc','a')
-    uses: ./.github/workflows/cd-docker-backend.yml ./.github/workflows/cd-docker-engine.yml
-    # steps:
-    #   - name: Call cd docker engine
-    #     uses: ./.github/workflows/cd-docker-engine.yml
+    steps:
+      - name: Call cd docker engine
+        uses: ./.github/workflows/cd-docker-engine.yml
 
-    #   - name: Call cd docker backend
-    #     uses: ./.github/workflows/cd-docker-backend.yml
+      - name: Call cd docker backend
+        uses: ./.github/workflows/cd-docker-backend.yml
         
+  # docker-build1:
+  #   runs-on: ubuntu-latest
+  #   needs: [main]
+  #   steps:
+  #     - name: Call cd docker engine
+  #       uses: ./.github/workflows/cd-docker-engine.yml
+
+  #     - name: Call cd docker backend
+  #       uses: ./.github/workflows/cd-docker-backend.yml
