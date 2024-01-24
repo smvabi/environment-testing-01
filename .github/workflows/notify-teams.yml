@@ -11,10 +11,11 @@ jobs:
       - name: Print the hello message
         run: |
           echo "Hello World!"
-          exit 1
 
       - name: print 2
-        run: echo "hello again"
+        run: |
+          echo "hello again"
+          exit 1
 
   notify:
     runs-on: ubuntu-latest
